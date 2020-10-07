@@ -16,6 +16,9 @@ This solution is almost certainly not suitable for any real-world use case.
 
 ## Deployment
 
-cdk init
-cdk deploy
+* cdk init
+* cdk deploy
 
+## See Also, References
+
+https://aws.amazon.com/blogs/database/how-to-stream-data-from-amazon-dynamodb-to-amazon-aurora-using-aws-lambda-and-amazon-kinesis-firehose/
