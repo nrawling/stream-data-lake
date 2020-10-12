@@ -25,14 +25,13 @@ class StreamDataLakeStack(core.Stack):
                        value=self.vpc.vpc_id)
 
         # Create Aurora Serverless instance to maintain current snapshot of data
-        cluster = rds.ServerlessCluster(self, 'AnotherCluster',
-                                        engine=rds.DatabaseClusterEngine.aurora_postgres(version=rds.AuroraPostgresEngineVersion.VER_11_7),
-#                                        parameterGroup=rds.ParameterGroup.fromParameterGroupName(self, 'ParameterGroup', 'default.aurora-postgresql10'),
+        cluster = rds.ServerlessCluster(self, 'nrawling-testcluster',
+                                        engine=rds.DatabaseClusterEngine.aurora_postgres(version=rds.AuroraPostgresEngineVersion.VER_10_7),
                                         vpc=self.vpc,
                                         scaling=rds.ServerlessScalingOptions(
                                             auto_pause=core.Duration.minutes(10),
-                                            min_capacity=rds.AuroraCapacityUnit.ACU_1,
-                                            max_capacity=rds.AuroraCapacityUnit.ACU_2,
+                                            min_capacity=rds.AuroraCapacityUnit.ACU_8,
+                                            max_capacity=rds.AuroraCapacityUnit.ACU_16,
                                         ))
 
         # Create Dynamo Source table
